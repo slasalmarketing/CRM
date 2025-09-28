@@ -1,79 +1,10 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<title>CRO CRM - نسخة احترافية</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-  * { box-sizing: border-box; margin:0; padding:0; }
-  body { font-family: 'Cairo', Arial, sans-serif; background: #eef2f7; color: #333; }
-
-  .container { max-width: 1000px; margin: 40px auto; padding: 20px; }
-  h2 { text-align: center; font-size: 34px; background: linear-gradient(90deg, #1e3a8a, #3b82f6); -webkit-background-clip: text; color: transparent; margin-bottom: 40px; }
-
-  .card {
-    background: #fff; 
-    border-radius: 16px; 
-    padding: 30px; 
-    margin-bottom: 25px; 
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
-  }
-  .card:hover { transform: translateY(-3px); }
-
-  .card h3 { color: #1e3a8a; margin-bottom: 18px; font-size: 22px; border-bottom: 2px solid #ddd; padding-bottom: 8px; }
-
-  label { display:block; margin-bottom:6px; font-weight:600; }
-  input, select, textarea {
-    width: 100%; padding: 14px; margin-bottom: 18px; border-radius: 10px; border: 1px solid #ccc; font-size: 15px;
-    transition: all 0.3s;
-  }
-  input:focus, select:focus, textarea:focus { border-color: #3b82f6; box-shadow: 0 0 10px rgba(59,130,246,0.2); outline:none; }
-
-  button {
-    display: block; width: 100%; padding: 16px; font-size: 18px; font-weight: 700; border:none; border-radius: 12px; cursor:pointer;
-    background: linear-gradient(90deg, #1e3a8a, #3b82f6);
-    color: #fff;
-    transition: all 0.3s;
-    margin-top: 20px;
-  }
-  button:hover { background: linear-gradient(90deg, #3b82f6, #1e3a8a); transform: translateY(-3px); }
-
-  #loading {
-    display:none; text-align:center; font-size:16px; color:#555; margin-top:15px;
-  }
-
-  /* Pop up */
-  #popup {
-    display:none;
-    position:fixed; top:0; left:0; width:100%; height:100%;
-    background:rgba(0,0,0,0.6);
-    justify-content:center; align-items:center;
-  }
-  #popup .content {
-    background:#fff; padding:25px 35px; border-radius:16px; text-align:center;
-    animation: pop .5s ease;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-  }
-  @keyframes pop {
-    from {transform:scale(0.6); opacity:0;}
-    to {transform:scale(1); opacity:1;}
-  }
-  .celebration {
-    font-size:50px; margin:15px 0; color:#FFD700;
-  }
-</style>
-</head>
-<body>
-<div class="container">
-  <h2>CRO CRM - إضافة تاسك جديد</h2>
+<form id="rashed-contact-form" name="rashed-contact-form">
 
   <!-- المسؤوليات -->
   <div class="card">
     <h3>المسؤوليات</h3>
     <label>Responsible SEO</label>
-    <select id="seo" required>
+    <select name="seo" required>
       <option value="">اختر المسؤول</option>
       <option value="Mohamed Metwally">Mohamed Metwally</option>
       <option value="elarbey">elarbey</option>
@@ -81,43 +12,43 @@
     </select>
 
     <label>Responsible account manager</label>
-    <select id="manager" required>
+    <select name="manager" required>
       <option value="">اختر المسؤول</option>
       <option value="Mohamed Metwaly">Mohamed Metwaly</option>
       <option value="Reem">Reem</option>
     </select>
 
     <label>Company Name</label>
-    <input type="text" id="company" placeholder="ادخل اسم الشركة" required>
+    <input type="text" name="company" placeholder="ادخل اسم الشركة" required>
   </div>
 
   <!-- تفاصيل التاسك -->
   <div class="card">
     <h3>تفاصيل التاسك</h3>
     <label>Task Type</label>
-    <select id="taskType" required>
+    <select name="taskType" required>
       <option value="">اختر نوع التاسك</option>
       <option value="UI salla">UI salla</option>
       <option value="Wordpress Creation">Wordpress Creation</option>
     </select>
 
     <label>Type of theme</label>
-    <input type="text" id="theme" placeholder="اسم الثيم" required>
+    <input type="text" name="theme" placeholder="اسم الثيم" required>
 
     <label>Website link</label>
-    <input type="url" id="website" placeholder="رابط الموقع" required>
+    <input type="url" name="website" placeholder="رابط الموقع" required>
 
     <label>Client Name</label>
-    <input type="text" id="client" placeholder="اسم العميل" required>
+    <input type="text" name="client" placeholder="اسم العميل" required>
 
     <label>Upload Folder of UI</label>
-    <input type="file" id="folder" multiple>
+    <input type="file" name="folder" multiple>
 
     <label>Seo Notes</label>
-    <textarea id="seoNotes" rows="4" placeholder="ملاحظات SEO"></textarea>
+    <textarea name="seoNotes" rows="4" placeholder="ملاحظات SEO"></textarea>
 
     <label>Client Products</label>
-    <select id="products" required>
+    <select name="products" required>
       <option value="">اختر نوع المنتجات</option>
       <option value="دروب شوبينج">دروب شوبينج</option>
       <option value="خاصة">خاصة</option>
@@ -127,93 +58,54 @@
     </select>
 
     <label>Keep new theme version?</label>
-    <select id="keepTheme" required>
+    <select name="keepTheme" required>
       <option value="">اختر</option>
       <option value="yes">Yes</option>
       <option value="no">No</option>
     </select>
 
     <label>Version Name to keep</label>
-    <input type="text" id="versionName" placeholder="اسم النسخة">
+    <input type="text" name="versionName" placeholder="اسم النسخة">
   </div>
 
   <!-- بيانات الدخول -->
   <div class="card">
     <h3>بيانات الدخول</h3>
     <label>Access (email)</label>
-    <input type="email" id="access" placeholder="البريد الإلكتروني" required>
+    <input type="email" name="access" placeholder="البريد الإلكتروني" required>
 
     <label>Password</label>
-    <input type="text" id="password" placeholder="كلمة المرور" required>
+    <input type="text" name="password" placeholder="كلمة المرور" required>
 
     <label>Screen Shots</label>
-    <input type="file" id="screenshots" multiple>
+    <input type="file" name="screenshots" multiple>
   </div>
 
-  <button id="submitBtn">حفظ التاسك</button>
+  <button type="submit">حفظ التاسك</button>
   <div id="loading">⏳ جاري الإرسال ...</div>
-</div>
-
-<!-- Pop up -->
-<div id="popup">
-  <div class="content">
-    <div class="celebration">🎉</div>
-    <h3>تم حفظ التاسك بنجاح!</h3>
-    <p>شكراً لاستخدامك النظام ✅</p>
-    <button onclick="document.getElementById('popup').style.display='none'">إغلاق</button>
-  </div>
-</div>
+</form>
 
 <script>
-document.getElementById('submitBtn').addEventListener('click', function(e){
+document.getElementById("rashed-contact-form").addEventListener("submit", function(e) {
   e.preventDefault();
-  document.getElementById("loading").style.display = "block";
 
-  let now = new Date();
-  let deadline = new Date();
-  if(now.getHours() < 12){
-    deadline.setHours(deadline.getHours() + 24);
-  }
+  var formData = new FormData(this);
 
-  let taskData = {
-    seo: document.getElementById('seo').value,
-    manager: document.getElementById('manager').value,
-    company: document.getElementById('company').value,
-    taskType: document.getElementById('taskType').value,
-    theme: document.getElementById('theme').value,
-    website: document.getElementById('website').value,
-    client: document.getElementById('client').value,
-    seoNotes: document.getElementById('seoNotes').value,
-    products: document.getElementById('products').value,
-    keepTheme: document.getElementById('keepTheme').value,
-    versionName: document.getElementById('versionName').value,
-    access: document.getElementById('access').value,
-    password: document.getElementById('password').value,
-    createdAt: now.toLocaleString(),
-    deadline: deadline.toLocaleString()
-  };
-
-  console.log(taskData);
-
-fetch("https://script.google.com/macros/s/AKfycbyi7JQ-pvFt0pQOUtP-oq_iYqEOCgkLE0vHC4QV0-_NvIU6zxNdwO5n9JjRyj0H8K_l/exec", {   
- method: "POST",
-    body: JSON.stringify(taskData),
-    headers: {"Content-Type": "application/json"}
+  fetch("https://script.google.com/macros/s/AKfycbzNHyG4n9uw_xNf8fol3teiihWtiQ5pe8J4K7ingqjksiKiORDkOGkvHldWZdtvIpNe/exec", {
+    method: "POST",
+    body: formData
   })
-  .then(res => res.json())
-  .then(res => {
-    document.getElementById("loading").style.display = "none";
-    if(res.result === "success"){   // ← عدلناها بدل status
-      document.getElementById("popup").style.display = "flex";
-    } else {
-      alert("❌ حصل خطأ: " + res.message);
-    }
+  .then(res => res.text())
+  .then(() => {
+    window.location.href = "https://believers-edu.com/thank-you/";
   })
   .catch(err => {
-    document.getElementById("loading").style.display = "none";
-    alert("⚠️ مشكلة في الاتصال: " + err);
+    alert("خطأ في الإرسال، حاول تاني.");
+    console.error(err);
   });
 });
 </script>
+
+
 </body>
 </html>
