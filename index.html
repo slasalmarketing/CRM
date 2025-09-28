@@ -51,7 +51,7 @@
   <div class="card">
     <h3>المسؤوليات</h3>
     <label>Responsible SEO</label>
-    <select id="seo" required>
+    <select id="seo">
       <option value="">اختر المسؤول</option>
       <option value="Mohamed Metwally">Mohamed Metwally</option>
       <option value="elarbey">elarbey</option>
@@ -59,43 +59,43 @@
     </select>
 
     <label>Responsible account manager</label>
-    <select id="manager" required>
+    <select id="manager">
       <option value="">اختر المسؤول</option>
       <option value="Mohamed Metwaly">Mohamed Metwaly</option>
       <option value="Reem">Reem</option>
     </select>
 
     <label>Company Name</label>
-    <input type="text" id="company" placeholder="ادخل اسم الشركة" required>
+    <input type="text" id="company" placeholder="ادخل اسم الشركة">
   </div>
 
   <!-- تفاصيل التاسك -->
   <div class="card">
     <h3>تفاصيل التاسك</h3>
     <label>Task Type</label>
-    <select id="taskType" required>
+    <select id="taskType">
       <option value="">اختر نوع التاسك</option>
       <option value="UI salla">UI salla</option>
       <option value="Wordpress Creation">Wordpress Creation</option>
     </select>
 
     <label>Type of theme</label>
-    <input type="text" id="theme" placeholder="اسم الثيم" required>
+    <input type="text" id="theme" placeholder="اسم الثيم">
 
     <label>Website link</label>
-    <input type="url" id="website" placeholder="رابط الموقع" required>
+    <input type="url" id="website" placeholder="رابط الموقع">
 
     <label>Client Name</label>
-    <input type="text" id="client" placeholder="اسم العميل" required>
+    <input type="text" id="client" placeholder="اسم العميل">
 
     <label>Upload Folder of UI</label>
-    <input type="file" id="folder" multiple required>
+    <input type="file" id="folder" multiple>
 
     <label>Seo Notes</label>
     <textarea id="seoNotes" rows="4" placeholder="ملاحظات SEO"></textarea>
 
     <label>Client Products</label>
-    <select id="products" required>
+    <select id="products">
       <option value="">اختر نوع المنتجات</option>
       <option value="دروب شوبينج">دروب شوبينج</option>
       <option value="خاصة">خاصة</option>
@@ -105,7 +105,7 @@
     </select>
 
     <label>Keep new theme version?</label>
-    <select id="keepTheme" required>
+    <select id="keepTheme">
       <option value="">اختر</option>
       <option value="yes">Yes</option>
       <option value="no">No</option>
@@ -119,13 +119,13 @@
   <div class="card">
     <h3>بيانات الدخول</h3>
     <label>Access (email)</label>
-    <input type="email" id="access" placeholder="البريد الإلكتروني" required>
+    <input type="email" id="access" placeholder="البريد الإلكتروني">
 
     <label>Password</label>
-    <input type="text" id="password" placeholder="كلمة المرور" required>
+    <input type="text" id="password" placeholder="كلمة المرور">
 
     <label>Screen Shots</label>
-    <input type="file" id="screenshots" multiple required>
+    <input type="file" id="screenshots" multiple>
   </div>
 
   <button id="submitBtn">💾 حفظ التاسك</button>
@@ -160,34 +160,38 @@ document.getElementById('submitBtn').addEventListener('click', async function(e)
   let screenshots = document.getElementById('screenshots').files;
   let uiFolder = document.getElementById('folder').files;
   let allFiles = [...screenshots, ...uiFolder];
-  let encodedFiles = await Promise.all([...allFiles].map(f => encodeFile(f)));
+
+  let encodedFiles = [];
+  if(allFiles.length > 0){
+    encodedFiles = await Promise.all([...allFiles].map(f => encodeFile(f)));
+  }
 
   let taskData = {
-    seo: document.getElementById('seo').value,
-    manager: document.getElementById('manager').value,
-    company: document.getElementById('company').value,
-    taskType: document.getElementById('taskType').value,
-    theme: document.getElementById('theme').value,
-    website: document.getElementById('website').value,
-    client: document.getElementById('client').value,
-    seoNotes: document.getElementById('seoNotes').value,
-    products: document.getElementById('products').value,
-    keepTheme: document.getElementById('keepTheme').value,
-    versionName: document.getElementById('versionName').value,
-    access: document.getElementById('access').value,
-    password: document.getElementById('password').value,
+    seo: document.getElementById('seo').value || "",
+    manager: document.getElementById('manager').value || "",
+    company: document.getElementById('company').value || "",
+    taskType: document.getElementById('taskType').value || "",
+    theme: document.getElementById('theme').value || "",
+    website: document.getElementById('website').value || "",
+    client: document.getElementById('client').value || "",
+    seoNotes: document.getElementById('seoNotes').value || "",
+    products: document.getElementById('products').value || "",
+    keepTheme: document.getElementById('keepTheme').value || "",
+    versionName: document.getElementById('versionName').value || "",
+    access: document.getElementById('access').value || "",
+    password: document.getElementById('password').value || "",
     createdAt: now.toLocaleString(),
     deadline: deadline.toLocaleString(),
     files: encodedFiles
   };
 
-  fetch("https://script.google.com/macros/s/AKfycbzzVJ4STWLqVLurwCKbIUfo_U7PT2UYjtnQpl-znxAv6XSgS0rvg-JR594t7A-vpVCg/exec", {
+  fetch("YOUR_GOOGLE_SCRIPT_WEBAPP_URL", {
     method: "POST",
-    contentType: "application/json",
+    headers: {"Content-Type": "application/json"},
     body: JSON.stringify(taskData)
   }).then(r => r.json())
     .then(res => {
-      alert("✅ تم حفظ التاسك ورفع الملفات!\nلينكات الملفات:\n" + res.links.join("\n"));
+      alert("✅ تم حفظ التاسك!\n" + (res.links ? "لينكات الملفات:\n" + res.links.join("\n") : ""));
     }).catch(err => {
       console.error(err);
       alert("❌ حصل خطأ أثناء الإرسال");
