@@ -1,15 +1,136 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>تقرير الإنتاجية</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <h1>تقرير الإنتاجية</h1>
-  <p>معدل الفرد: 0.72 تاسك/ساعة</p>
-  <p>تاسك كل ≈ 1.4 ساعة</p>
-  <script src="script.js"></script>
-</body>
-</html>
+<!-- START: Dark Contact Form -->
+<style>
+  .rashed-form-wrapper {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background: linear-gradient(96.79deg, #171717 -62.94%, #323335 -62.92%, rgba(90, 90, 90, 0) 54.42%, #171717 174.24%);
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+    font-family: "Rajdhani", sans-serif;
+  }
+
+  .rashed-form-row {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding: 18px 12px;
+  }
+
+  .rashed-form-row:last-child { border-bottom: none; }
+
+  .rashed-icon-box {
+    width: 28px;
+    height: 28px;
+    margin-right: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .rashed-icon-box img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    filter: brightness(0) saturate(100%) invert(62%) sepia(92%) saturate(347%) hue-rotate(176deg) brightness(97%) contrast(95%);
+  }
+
+  .rashed-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 15px;
+  }
+
+  .rashed-input::placeholder { color: rgba(255,255,255,0.5); }
+
+  .rashed-submit-box { margin-top: 24px; }
+
+  .rashed-submit-btn {
+    width: 100%;
+    background: linear-gradient(90deg, #638AC6 16.14%, #2C338F 93.03%);
+    border: none;
+    padding: 16px 24px;
+    border-radius: 12px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: opacity .2s ease;
+  }
+
+  .rashed-submit-btn:hover { opacity: 0.9; }
+</style>
+
+<div class="rashed-form-wrapper">
+  <form id="rashed-contact-form"
+        onsubmit="this.querySelector('.rashed-submit-btn').textContent='جارٍ الإرسال...';">
+        
+    <!-- Name -->
+    <div class="rashed-form-row">
+      <div class="rashed-icon-box">
+        <img src="https://believers-edu.com/wp-content/uploads/2025/09/profile.svg" alt="Name Icon">
+      </div>
+      <input type="text" class="rashed-input" name="name" placeholder="Name" required>
+    </div>
+
+    <!-- Email -->
+    <div class="rashed-form-row">
+      <div class="rashed-icon-box">
+        <img src="https://believers-edu.com/wp-content/uploads/2025/09/sms.svg" alt="Email Icon">
+      </div>
+      <input type="email" class="rashed-input" name="email" placeholder="Email" required>
+    </div>
+
+    <!-- Subject -->
+    <div class="rashed-form-row">
+      <div class="rashed-icon-box">
+        <img src="https://believers-edu.com/wp-content/uploads/2025/09/category-2.svg" alt="Subject Icon">
+      </div>
+      <input type="text" class="rashed-input" name="subject" placeholder="Subject">
+    </div>
+
+    <!-- Message -->
+    <div class="rashed-form-row">
+      <div class="rashed-icon-box">
+        <img src="https://believers-edu.com/wp-content/uploads/2025/09/category-2.svg" alt="Message Icon">
+      </div>
+      <input type="text" class="rashed-input" name="message" placeholder="Message" required>
+    </div>
+
+    <!-- Submit -->
+    <div class="rashed-submit-box">
+      <button type="submit" class="rashed-submit-btn">
+        Submit ➝
+      </button>
+    </div>
+  </form>
+</div>
+<script>
+document.getElementById("rashed-contact-form").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  var formData = new FormData(this);
+
+  fetch("https://script.google.com/macros/s/AKfycbzNHyG4n9uw_xNf8fol3teiihWtiQ5pe8J4K7ingqjksiKiORDkOGkvHldWZdtvIpNe/exec", {
+    method: "POST",
+    body: formData
+  })
+  .then(res => res.text())
+  .then(() => {
+    window.location.href = "https://believers-edu.com/thank-you/";
+  })
+  .catch(err => {
+    alert("خطأ في الإرسال، حاول تاني.");
+    console.error(err);
+  });
+});
+</script>
+
+
