@@ -1,136 +1,198 @@
-<!-- START: Dark Contact Form -->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>CRO CRM - إضافة تاسك</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  .rashed-form-wrapper {
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 30px;
-    background: linear-gradient(96.79deg, #171717 -62.94%, #323335 -62.92%, rgba(90, 90, 90, 0) 54.42%, #171717 174.24%);
-    border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
-    font-family: "Rajdhani", sans-serif;
+  * { box-sizing: border-box; margin:0; padding:0; }
+  body { font-family: 'Cairo', Arial, sans-serif; background: linear-gradient(135deg, #1e40af, #9333ea); color: #333; min-height: 100vh; padding:20px; }
+  .container { max-width: 1000px; margin: 40px auto; padding: 20px; }
+  h2 { text-align: center; color: #fff; font-size: 32px; margin-bottom: 30px; }
+  
+  .card {
+    background: #fff; 
+    border-radius: 12px; 
+    padding: 25px; 
+    margin-bottom: 20px; 
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
   }
 
-  .rashed-form-row {
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    padding: 18px 12px;
+  .card h3 { color: #1e40af; margin-bottom: 15px; font-size: 22px; border-bottom: 1px solid #ddd; padding-bottom: 5px; }
+
+  label { font-weight:600; margin-bottom:5px; display:block; }
+
+  input, select, textarea {
+    width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #ccc; font-size: 15px;
+    transition: 0.3s;
   }
+  input:focus, select:focus, textarea:focus { border-color: #9333ea; box-shadow: 0 0 8px rgba(147,51,234,0.3); outline:none; }
 
-  .rashed-form-row:last-child { border-bottom: none; }
-
-  .rashed-icon-box {
-    width: 28px;
-    height: 28px;
-    margin-right: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  button {
+    display: block; width: 100%; padding: 14px; 
+    background: linear-gradient(135deg,#1e40af,#9333ea); 
+    color: #fff; font-size: 18px; font-weight: 600; border:none; border-radius: 10px; cursor:pointer;
+    transition: 0.3s;
   }
+  button:hover { opacity: 0.9; transform: translateY(-2px); }
 
-  .rashed-icon-box img {
-    width: 22px;
-    height: 22px;
-    object-fit: contain;
-    filter: brightness(0) saturate(100%) invert(62%) sepia(92%) saturate(347%) hue-rotate(176deg) brightness(97%) contrast(95%);
+  @media(max-width:768px){
+    h2 { font-size: 26px; }
+    .card h3 { font-size: 20px; }
   }
-
-  .rashed-input {
-    flex: 1;
-    background: transparent;
-    border: none;
-    outline: none;
-    color: #fff;
-    font-size: 15px;
-  }
-
-  .rashed-input::placeholder { color: rgba(255,255,255,0.5); }
-
-  .rashed-submit-box { margin-top: 24px; }
-
-  .rashed-submit-btn {
-    width: 100%;
-    background: linear-gradient(90deg, #638AC6 16.14%, #2C338F 93.03%);
-    border: none;
-    padding: 16px 24px;
-    border-radius: 12px;
-    color: #fff;
-    font-weight: 600;
-    font-size: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    cursor: pointer;
-    transition: opacity .2s ease;
-  }
-
-  .rashed-submit-btn:hover { opacity: 0.9; }
 </style>
+</head>
+<body>
+<div class="container">
+  <h2>🚀 CRO CRM - إضافة تاسك جديد</h2>
 
-<div class="rashed-form-wrapper">
-  <form id="rashed-contact-form"
-        onsubmit="this.querySelector('.rashed-submit-btn').textContent='جارٍ الإرسال...';">
-        
-    <!-- Name -->
-    <div class="rashed-form-row">
-      <div class="rashed-icon-box">
-        <img src="https://believers-edu.com/wp-content/uploads/2025/09/profile.svg" alt="Name Icon">
-      </div>
-      <input type="text" class="rashed-input" name="name" placeholder="Name" required>
-    </div>
+  <!-- المسؤوليات -->
+  <div class="card">
+    <h3>المسؤوليات</h3>
+    <label>Responsible SEO</label>
+    <select id="seo" required>
+      <option value="">اختر المسؤول</option>
+      <option value="Mohamed Metwally">Mohamed Metwally</option>
+      <option value="elarbey">elarbey</option>
+      <option value="Marketing">Marketing</option>
+    </select>
 
-    <!-- Email -->
-    <div class="rashed-form-row">
-      <div class="rashed-icon-box">
-        <img src="https://believers-edu.com/wp-content/uploads/2025/09/sms.svg" alt="Email Icon">
-      </div>
-      <input type="email" class="rashed-input" name="email" placeholder="Email" required>
-    </div>
+    <label>Responsible account manager</label>
+    <select id="manager" required>
+      <option value="">اختر المسؤول</option>
+      <option value="Mohamed Metwaly">Mohamed Metwaly</option>
+      <option value="Reem">Reem</option>
+    </select>
 
-    <!-- Subject -->
-    <div class="rashed-form-row">
-      <div class="rashed-icon-box">
-        <img src="https://believers-edu.com/wp-content/uploads/2025/09/category-2.svg" alt="Subject Icon">
-      </div>
-      <input type="text" class="rashed-input" name="subject" placeholder="Subject">
-    </div>
+    <label>Company Name</label>
+    <input type="text" id="company" placeholder="ادخل اسم الشركة" required>
+  </div>
 
-    <!-- Message -->
-    <div class="rashed-form-row">
-      <div class="rashed-icon-box">
-        <img src="https://believers-edu.com/wp-content/uploads/2025/09/category-2.svg" alt="Message Icon">
-      </div>
-      <input type="text" class="rashed-input" name="message" placeholder="Message" required>
-    </div>
+  <!-- تفاصيل التاسك -->
+  <div class="card">
+    <h3>تفاصيل التاسك</h3>
+    <label>Task Type</label>
+    <select id="taskType" required>
+      <option value="">اختر نوع التاسك</option>
+      <option value="UI salla">UI salla</option>
+      <option value="Wordpress Creation">Wordpress Creation</option>
+    </select>
 
-    <!-- Submit -->
-    <div class="rashed-submit-box">
-      <button type="submit" class="rashed-submit-btn">
-        Submit ➝
-      </button>
-    </div>
-  </form>
+    <label>Type of theme</label>
+    <input type="text" id="theme" placeholder="اسم الثيم" required>
+
+    <label>Website link</label>
+    <input type="url" id="website" placeholder="رابط الموقع" required>
+
+    <label>Client Name</label>
+    <input type="text" id="client" placeholder="اسم العميل" required>
+
+    <label>Upload Folder of UI</label>
+    <input type="file" id="folder" multiple required>
+
+    <label>Seo Notes</label>
+    <textarea id="seoNotes" rows="4" placeholder="ملاحظات SEO"></textarea>
+
+    <label>Client Products</label>
+    <select id="products" required>
+      <option value="">اختر نوع المنتجات</option>
+      <option value="دروب شوبينج">دروب شوبينج</option>
+      <option value="خاصة">خاصة</option>
+      <option value="رقمية">رقمية</option>
+      <option value="خدمات">خدمات</option>
+      <option value="Niche store">Niche store</option>
+    </select>
+
+    <label>Keep new theme version?</label>
+    <select id="keepTheme" required>
+      <option value="">اختر</option>
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+    </select>
+
+    <label>Version Name to keep</label>
+    <input type="text" id="versionName" placeholder="اسم النسخة">
+  </div>
+
+  <!-- بيانات الدخول -->
+  <div class="card">
+    <h3>بيانات الدخول</h3>
+    <label>Access (email)</label>
+    <input type="email" id="access" placeholder="البريد الإلكتروني" required>
+
+    <label>Password</label>
+    <input type="text" id="password" placeholder="كلمة المرور" required>
+
+    <label>Screen Shots</label>
+    <input type="file" id="screenshots" multiple required>
+  </div>
+
+  <button id="submitBtn">💾 حفظ التاسك</button>
 </div>
+
 <script>
-document.getElementById("rashed-contact-form").addEventListener("submit", function(e) {
+document.getElementById('submitBtn').addEventListener('click', async function(e){
   e.preventDefault();
 
-  var formData = new FormData(this);
+  let now = new Date();
+  let deadline = new Date();
+  if(now.getHours() < 12){
+    deadline.setHours(deadline.getHours() + 24);
+  }
 
-  fetch("https://script.google.com/macros/s/AKfycbxyHjrR9R_0a5ijLggXPQmtw6anz3eSZ8B5YNs9F3jOgpERfWr5eHPCeKgYPkdD_YXP/exec", {
+  // قراءة الملفات وتحويلها Base64
+  async function encodeFile(file){
+    return new Promise((resolve) => {
+      let reader = new FileReader();
+      reader.onload = () => {
+        let base64 = reader.result.split(',')[1];
+        resolve({
+          name: file.name,
+          mimeType: file.type,
+          data: base64
+        });
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  let screenshots = document.getElementById('screenshots').files;
+  let uiFolder = document.getElementById('folder').files;
+  let allFiles = [...screenshots, ...uiFolder];
+  let encodedFiles = await Promise.all([...allFiles].map(f => encodeFile(f)));
+
+  let taskData = {
+    seo: document.getElementById('seo').value,
+    manager: document.getElementById('manager').value,
+    company: document.getElementById('company').value,
+    taskType: document.getElementById('taskType').value,
+    theme: document.getElementById('theme').value,
+    website: document.getElementById('website').value,
+    client: document.getElementById('client').value,
+    seoNotes: document.getElementById('seoNotes').value,
+    products: document.getElementById('products').value,
+    keepTheme: document.getElementById('keepTheme').value,
+    versionName: document.getElementById('versionName').value,
+    access: document.getElementById('access').value,
+    password: document.getElementById('password').value,
+    createdAt: now.toLocaleString(),
+    deadline: deadline.toLocaleString(),
+    files: encodedFiles
+  };
+
+  fetch("🔗 ضع رابط الويب آب هنا", {
     method: "POST",
-    body: formData
-  })
-  .then(res => res.text())
-  .then(() => {
-    window.location.href = "https://believers-edu.com/thank-you/";
-  })
-  .catch(err => {
-    alert("خطأ في الإرسال، حاول تاني.");
-    console.error(err);
-  });
+    contentType: "application/json",
+    body: JSON.stringify(taskData)
+  }).then(r => r.json())
+    .then(res => {
+      alert("✅ تم حفظ التاسك ورفع الملفات!\nلينكات الملفات:\n" + res.links.join("\n"));
+    }).catch(err => {
+      console.error(err);
+      alert("❌ حصل خطأ أثناء الإرسال");
+    });
 });
 </script>
-
-
+</body>
+</html>
