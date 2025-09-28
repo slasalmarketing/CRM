@@ -193,25 +193,26 @@ document.getElementById('submitBtn').addEventListener('click', function(e){
     deadline: deadline.toLocaleString()
   };
 
-console.log(taskData);
+  console.log(taskData);
 
-fetch("https://script.google.com/macros/s/AKfycbyeVYS5IOp04BR7yYz6JiwxHILNu2jlPmWw2yp5Z76mgkqHv09e_p1ORJSeDoZxQ1Kz/exec", {   // ← حط رابط الـ Web App هنا
-  method: "POST",
-  body: JSON.stringify(taskData),
-  headers: {"Content-Type": "application/json"}
-})
-.then(res => res.json())
-.then(res => {
-  document.getElementById("loading").style.display = "none";
-  if(res.status === "success"){
-    document.getElementById("popup").style.display = "flex";
-  } else {
-    alert("❌ حصل خطأ: " + res.message);
-  }
-})
-.catch(err => {
-  document.getElementById("loading").style.display = "none";
-  alert("⚠️ مشكلة في الاتصال: " + err);
+fetch("https://script.google.com/macros/s/AKfycbyeVYS5IOp04BR7yYz6JiwxHILNu2jlPmWw2yp5Z76mgkqHv09e_p1ORJSeDoZxQ1Kz/exec", {   
+ method: "POST",
+    body: JSON.stringify(taskData),
+    headers: {"Content-Type": "application/json"}
+  })
+  .then(res => res.json())
+  .then(res => {
+    document.getElementById("loading").style.display = "none";
+    if(res.result === "success"){   // ← عدلناها بدل status
+      document.getElementById("popup").style.display = "flex";
+    } else {
+      alert("❌ حصل خطأ: " + res.message);
+    }
+  })
+  .catch(err => {
+    document.getElementById("loading").style.display = "none";
+    alert("⚠️ مشكلة في الاتصال: " + err);
+  });
 });
 </script>
 </body>
