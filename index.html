@@ -6,151 +6,181 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  * { box-sizing: border-box; margin:auto; padding:0; width:80%;}
-  body { font-family: 'Cairo', Arial, sans-serif; background: #eef2f7; color: #333; }
+* { box-sizing: border-box; margin:0; padding:0; }
+body { font-family: 'Cairo', Arial, sans-serif; background: #eef2f7; color: #333; }
 
-  .container { max-width: 1000px; margin: 40px auto; padding: 20px; }
-  h2 { text-align: center; font-size: 34px; background: linear-gradient(90deg, #1e3a8a, #3b82f6); -webkit-background-clip: text; color: transparent; margin-bottom: 40px; }
+.container { max-width: 1000px; margin: 40px auto; padding: 20px; }
+h2 { text-align: center; font-size: 34px; background: linear-gradient(90deg, #1e3a8a, #3b82f6); -webkit-background-clip: text; color: transparent; margin-bottom: 40px; }
 
-  .card {
-    background: #fff; 
-    border-radius: 16px; 
-    padding: 30px; 
-    margin-bottom: 25px; 
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
-  }
-  .card:hover { transform: translateY(-3px); }
+.card { background: #fff; border-radius: 16px; padding: 30px; margin-bottom: 25px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); transition: transform 0.3s; }
+.card:hover { transform: translateY(-3px); }
+.card h3 { color: #1e3a8a; margin-bottom: 18px; font-size: 22px; border-bottom: 2px solid #ddd; padding-bottom: 8px; }
 
-  .card h3 { color: #1e3a8a; margin-bottom: 18px; font-size: 22px; border-bottom: 2px solid #ddd; padding-bottom: 8px; }
+label { display:block; margin-bottom:6px; font-weight:600; }
+input, select, textarea { width:100%; padding:14px; margin-bottom:18px; border-radius:10px; border:1px solid #ccc; font-size:15px; transition: all 0.3s; }
+input:focus, select:focus, textarea:focus { border-color: #3b82f6; box-shadow: 0 0 10px rgba(59,130,246,0.2); outline:none; }
 
-  label { display:block; margin-bottom:6px; font-weight:600; }
-  input, select, textarea {
-    width: 100%; padding: 14px; margin-bottom: 18px; border-radius: 10px; border: 1px solid #ccc; font-size: 15px;
-    transition: all 0.3s;
-  }
-  input:focus, select:focus, textarea:focus { border-color: #3b82f6; box-shadow: 0 0 10px rgba(59,130,246,0.2); outline:none; }
+button { display: block; width: 100%; padding: 16px; font-size: 18px; font-weight: 700; border:none; border-radius: 12px; cursor:pointer; background: linear-gradient(90deg, #1e3a8a, #3b82f6); color: #fff; transition: all 0.3s; margin-top: 20px; }
+button:hover { background: linear-gradient(90deg, #3b82f6, #1e3a8a); transform: translateY(-3px); }
 
-  button {
-    display: block; width: 100%; padding: 16px; font-size: 18px; font-weight: 700; border:none; border-radius: 12px; cursor:pointer;
-    background: linear-gradient(90deg, #1e3a8a, #3b82f6);
-    color: #fff;
-    transition: all 0.3s;
-    margin-top: 20px;
-  }
-  button:hover { background: linear-gradient(90deg, #3b82f6, #1e3a8a); transform: translateY(-3px); }
+#loading { display:none; text-align:center; font-size:16px; color:#555; margin-top:15px; }
 
-  #loading {
-    display:none; text-align:center; font-size:16px; color:#555; margin-top:15px;
-  }
-
-  /* Pop up */
-  #popup {
-    display:none;
-    position:fixed; top:0; left:0; width:100%; height:100%;
-    background:rgba(0,0,0,0.6);
-    justify-content:center; align-items:center;
-  }
-  #popup .content {
-    background:#fff; padding:25px 35px; border-radius:16px; text-align:center;
-    animation: pop .5s ease;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-  }
-  @keyframes pop {
-    from {transform:scale(0.6); opacity:0;}
-    to {transform:scale(1); opacity:1;}
-  }
-  .celebration {
-    font-size:50px; margin:15px 0; color:#FFD700;
-  }
+/* Pop-up احترافي */
+#popup { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.7); justify-content: center; align-items: center; z-index: 9999; }
+#popup .content { background: linear-gradient(135deg, #ff416c, #6d524d, #6a11cb, #2575fc); padding: 50px 40px; border-radius: 30px; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.5); max-width: 600px; width: 90%; color: #fff; animation: popupAppear 0.8s ease forwards; position: relative; }
+#popup .close-btn { position: absolute; top: 15px; left: 15px; background: #fff; border: none; color: #ff4b2b; font-size: 24px; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; font-weight: bold; }
+@keyframes popupAppear { 0% {transform: scale(0.5) rotate(-10deg); opacity: 0;} 60% {transform: scale(1.05) rotate(2deg); opacity: 1;} 100% {transform: scale(1) rotate(0);} }
+.shake { animation: shake 0.5s; }
+@keyframes shake { 0% { transform: translate(1px, 1px) rotate(0deg); } 10% { transform: translate(-1px, -2px) rotate(-1deg); } 20% { transform: translate(-3px, 0px) rotate(1deg); } 30% { transform: translate(3px, 2px) rotate(0deg); } 40% { transform: translate(1px, -1px) rotate(1deg); } 50% { transform: translate(-1px, 2px) rotate(-1deg); } 60% { transform: translate(-3px, 1px) rotate(0deg); } 70% { transform: translate(3px, 1px) rotate(-1deg); } 80% { transform: translate(-1px, -1px) rotate(1deg); } 90% { transform: translate(1px, 2px) rotate(0deg); } 100% { transform: translate(1px, -2px) rotate(-1deg); } }
+.celebration { font-size:90px; margin:25px 0; text-shadow: 0 0 20px #fff, 0 0 30px #ffd700, 0 0 40px #ff69b4; }
+.task-summary { text-align: right; margin-top:20px; font-size:16px; line-height:1.6; color:#fff; }
+.task-summary strong { color: #fff; text-shadow: 0 0 5px #000; }
 </style>
 </head>
-<form id="rashed-contact-form" name="rashed-contact-form">
+<body>
+<div class="container">
+  <h2>CRO CRM - إضافة تاسك جديد</h2>
 
-  <!-- المسؤوليات -->
-  <div class="card">
-    <h3>المسؤوليات</h3>
-    <label>Responsible SEO</label>
-    <select name="seo" required>
-      <option value="">اختر المسؤول</option>
-      <option value="Mohamed Metwally">Mohamed Metwally</option>
-      <option value="elarbey">elarbey</option>
-      <option value="Marketing">Marketing</option>
-    </select>
+  <form id="rashed-contact-form">
+    <div class="card">
+      <h3>المسؤوليات</h3>
+      <label>Responsible SEO</label>
+      <select name="seo" required>
+        <option value="">اختر المسؤول</option>
+        <option value="Mohamed Metwally">Mohamed Metwally</option>
+        <option value="elarbey">elarbey</option>
+        <option value="Marketing">Marketing</option>
+      </select>
 
-    <label>Responsible account manager</label>
-    <select name="manager" required>
-      <option value="">اختر المسؤول</option>
-      <option value="Mohamed Metwaly">Mohamed Metwaly</option>
-      <option value="Reem">Reem</option>
-    </select>
+      <label>Responsible account manager</label>
+      <select name="manager" required>
+        <option value="">اختر المسؤول</option>
+        <option value="Mohamed Metwaly">Mohamed Metwaly</option>
+        <option value="Reem">Reem</option>
+      </select>
 
-    <label>Company Name</label>
-    <input type="text" name="company" placeholder="ادخل اسم الشركة" required>
+     <label>Company Name</label>
+<select name="company" required>
+  <option value="">اختر الشركة</option>
+  <option value="Slasal">Slasal</option>
+  <option value="Elhamour">Elhamour</option>
+  <option value="Saeb">Saeb</option>
+</select>
+    <div class="card">
+      <h3>تفاصيل التاسك</h3>
+      <label>Task Type</label>
+      <select name="taskType" required>
+        <option value="">اختر نوع التاسك</option>
+        <option value="UI salla">UI salla</option>
+        <option value="Wordpress Creation">Wordpress Creation</option>
+      </select>
+
+      <label>Type of theme</label>
+      <input type="text" name="theme" placeholder="اسم الثيم" required>
+
+      <label>Website link</label>
+      <input type="url" name="website" placeholder="رابط الموقع" required>
+
+      <label>Client Name</label>
+      <input type="text" name="client" placeholder="اسم العميل" required>
+
+      <label>Seo Notes</label>
+      <textarea name="seoNotes" rows="4" placeholder="ملاحظات SEO"></textarea>
+
+      <label>Client Products</label>
+      <select name="products" required>
+        <option value="">اختر نوع المنتجات</option>
+        <option value="دروب شوبينج">دروب شوبينج</option>
+        <option value="خاصة">خاصة</option>
+        <option value="رقمية">رقمية</option>
+        <option value="خدمات">خدمات</option>
+        <option value="Niche store">Niche store</option>
+      </select>
+
+      <label>Keep new theme version?</label>
+      <select name="keepTheme" required>
+        <option value="">اختر</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+
+      <label>Version Name to keep</label>
+      <input type="text" name="versionName" placeholder="اسم النسخة">
+    </div>
+
+    <div class="card">
+      <h3>بيانات الدخول</h3>
+      <label>Access (email)</label>
+      <input type="email" name="access" placeholder="البريد الإلكتروني" required>
+
+      <label>Password</label>
+      <input type="text" name="password" placeholder="كلمة المرور" required>
+    </div>
+
+    <button type="submit" id="submitBtn">حفظ التاسك</button>
+    <div id="loading">⏳ جاري الإرسال ...</div>
+  </form>
+</div>
+
+<div id="popup">
+  <div class="content">
+    <button class="close-btn" onclick="document.getElementById('popup').style.display='none'">×</button>
+    <div class="celebration">🎉</div>
+    <h3>تم حفظ التاسك بنجاح!</h3>
+    <div class="task-summary" id="taskSummary"></div>
   </div>
+</div>
 
-  <!-- تفاصيل التاسك -->
-  <div class="card">
-    <h3>تفاصيل التاسك</h3>
-    <label>Task Type</label>
-    <select name="taskType" required>
-      <option value="">اختر نوع التاسك</option>
-      <option value="UI salla">UI salla</option>
-      <option value="Wordpress Creation">Wordpress Creation</option>
-    </select>
-
-    <label>Type of theme</label>
-    <input type="text" name="theme" placeholder="اسم الثيم" required>
-
-    <label>Website link</label>
-    <input type="url" name="website" placeholder="رابط الموقع" required>
-
-    <label>Client Name</label>
-    <input type="text" name="client" placeholder="اسم العميل" required>
-
-    <label>Seo Notes</label>
-    <textarea name="seoNotes" rows="4" placeholder="ملاحظات SEO"></textarea>
-
-    <label>Client Products</label>
-    <select name="products" required>
-      <option value="">اختر نوع المنتجات</option>
-      <option value="دروب شوبينج">دروب شوبينج</option>
-      <option value="خاصة">خاصة</option>
-      <option value="رقمية">رقمية</option>
-      <option value="خدمات">خدمات</option>
-      <option value="Niche store">Niche store</option>
-    </select>
-
-    <label>Keep new theme version?</label>
-    <select name="keepTheme" required>
-      <option value="">اختر</option>
-      <option value="yes">Yes</option>
-      <option value="no">No</option>
-    </select>
-
-    <label>Version Name to keep</label>
-    <input type="text" name="versionName" placeholder="اسم النسخة">
-  </div>
-
-  <!-- بيانات الدخول -->
-  <div class="card">
-    <h3>بيانات الدخول</h3>
-    <label>Access (email)</label>
-    <input type="email" name="access" placeholder="البريد الإلكتروني" required>
-
-    <label>Password</label>
-    <input type="text" name="password" placeholder="كلمة المرور" required>
-  </div>
-
-  <button type="submit">حفظ التاسك</button>
-  <div id="loading">⏳ جاري الإرسال ...</div>
-</form>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <script>
+// دالة الاحتفال بالزهور والنجوم والقلوب
+function launchRealisticFlowers() {
+  const duration = 5000;
+  const animationEnd = Date.now() + duration;
+  const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 9999 };
+
+  function randomInRange(min, max) { return Math.random() * (max - min) + min; }
+
+  const interval = setInterval(function() {
+    const timeLeft = animationEnd - Date.now();
+    if (timeLeft <= 0) return clearInterval(interval);
+
+    for (let i = 0; i < 5; i++) {
+      confetti(Object.assign({}, defaults, {
+        particleCount: 2,
+        origin: { x: Math.random(), y: Math.random() * 0.3 },
+        shapes: ['circle', 'heart', 'star'],
+        colors: [
+          `hsl(${randomInRange(0, 360)}, 100%, 60%)`,
+          `hsl(${randomInRange(0, 360)}, 80%, 70%)`,
+          `hsl(${randomInRange(0, 360)}, 90%, 50%)`
+        ],
+        gravity: randomInRange(0.3, 0.7),
+        scalar: randomInRange(0.5, 1.5),
+        drift: randomInRange(-0.8, 0.8),
+        ticks: randomInRange(80, 120),
+        tilt: randomInRange(-15, 15),
+        roll: randomInRange(0, 360),
+        wobble: randomInRange(0, 30)
+      }));
+    }
+  }, 200);
+}
+
 document.getElementById("rashed-contact-form").addEventListener("submit", function(e) {
   e.preventDefault();
+  const form = this;
+  const submitBtn = document.getElementById("submitBtn");
 
-  var formData = new FormData(this);
+  // تغيير الزر لـ "جاري حفظ التاسك ..."
+  submitBtn.disabled = true;
+  const originalText = submitBtn.innerText;
+  submitBtn.innerText = "⏳ جاري حفظ التاسك ...";
+
+  const formData = new FormData(form);
+  const popup = document.getElementById("popup");
+  const content = popup.querySelector(".content");
 
   fetch("https://script.google.com/macros/s/AKfycbwv0MEgTQGmlbx1235u23s1s5ri8re35XlEjX-o7GoNDXnH0cTMwOxJQu0U-OetUJDg/exec", {
     method: "POST",
@@ -158,14 +188,48 @@ document.getElementById("rashed-contact-form").addEventListener("submit", functi
   })
   .then(res => res.text())
   .then(() => {
-    window.location.href = "https://believers-edu.com/thank-you/";
+    // تغيير الزر للون الأخضر و "تم الإرسال"
+    submitBtn.style.background = "linear-gradient(90deg, #10b981, #047857)";
+    submitBtn.innerText = "✅ تم الإرسال";
+
+    // تشغيل صوت التصفيق
+    const audio = new Audio('https://www.soundjay.com/human/sounds/applause-01.mp3');
+    audio.play().catch(() => { submitBtn.addEventListener('click', () => { audio.play(); }); });
+
+    // اهتزاز Pop-up
+    content.classList.add("shake");
+    setTimeout(()=>{ content.classList.remove("shake"); }, 1500);
+
+    // ملخص البيانات
+    const summary = document.getElementById("taskSummary");
+    summary.innerHTML = `
+      <strong>SEO:</strong> ${form.seo.value}<br>
+      <strong>Manager:</strong> ${form.manager.value}<br>
+      <strong>Company:</strong> ${form.company.value}<br>
+      <strong>Task Type:</strong> ${form.taskType.value}<br>
+      <strong>Theme:</strong> ${form.theme.value}<br>
+      <strong>Client:</strong> ${form.client.value}<br>
+      <strong>Products:</strong> ${form.products.value}
+    `;
+
+    // إظهار البوب أب
+    popup.style.display = "flex";
+
+    // إطلاق الاحتفال بالزهور والقلوب والنجوم
+    launchRealisticFlowers();
+
+    // إخفاء البوب أب بعد 30 ثانية
+    setTimeout(()=>{ popup.style.display = "none"; }, 40000);
+
+    form.reset();
   })
   .catch(err => {
     alert("خطأ في الإرسال، حاول تاني.");
     console.error(err);
+    submitBtn.disabled = false;
+    submitBtn.innerText = originalText;
   });
 });
 </script>
-
 </body>
 </html>
