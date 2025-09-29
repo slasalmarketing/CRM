@@ -39,7 +39,7 @@ button:hover { background: linear-gradient(90deg, #3b82f6, #1e3a8a); transform: 
 </head>
 <body>
 <div class="container">
-  <h2>CRO CRM - إضافة تاسك جديد</h2>
+  <h2>CRO CRM Technical</h2>
 
   <form id="rashed-contact-form">
     <div class="card">
@@ -51,6 +51,21 @@ button:hover { background: linear-gradient(90deg, #3b82f6, #1e3a8a); transform: 
         <option value="elarbey">elarbey</option>
         <option value="Marketing">Marketing</option>
       </select>
+<label>SEO Team Leader</label>
+<select name="seoTeamLeader" required>
+  <option value="">اختر المسؤول</option>
+  <option value="Mohamed Metwally">Mohamed Metwally</option>
+  <option value="elarbey">elarbey</option>
+  <option value="Marketing">Marketing</option>
+  <option value="Reem">Reem</option>
+  <option value="Gemy">Gemy</option>
+</select>
+      <label>Head of SEO</label>
+<select name="headOfSEO" required>
+  <option value="">اختر المسؤول</option>
+  <option value="Marwa">Head of SEO - Marwa</option>
+</select>
+
 
       <label>Responsible account manager</label>
       <select name="manager" required>
@@ -62,50 +77,72 @@ button:hover { background: linear-gradient(90deg, #3b82f6, #1e3a8a); transform: 
      <label>Company Name</label>
 <select name="company" required>
   <option value="">اختر الشركة</option>
-  <option value="Slasal">Slasal</option>
+  <option value="salasl">salasl</option>
   <option value="Elhamour">Elhamour</option>
   <option value="Saeb">Saeb</option>
+    <option value="Sadara">Sadara</option>
+  <option value="Torwada">Torwada</option>
+      <option value="Ranann">Ranann</option>
+
+
 </select>
     <div class="card">
-      <h3>تفاصيل التاسك</h3>
-      <label>Task Type</label>
-      <select name="taskType" required>
-        <option value="">اختر نوع التاسك</option>
-        <option value="UI salla">UI salla</option>
-        <option value="Wordpress Creation">Wordpress Creation</option>
-      </select>
+     <h3>تفاصيل التاسك</h3>
+<label>Task Type</label>
+<select name="taskType" required>
+  <option value="">اختر نوع التاسك</option>
+  <option value="UI salla">UI salla</option>
+  <option value="UI Zid">UI Zid</option>
+  <option value="UI shopify">UI Shopify</option>
+  <option value="UI open cart">UI Open Cart</option>
+  <option value="Wordpress Ui">Wordpress Ui</option>
+  <option value="Wordpress Edit">Wordpress Edit</option>
+  <option value="Landing page Salla">Landing Page Salla</option>
+  <option value="Coding">Coding</option>
+  <option value="Another platform">Another Platform</option>
+</select>
+
 
       <label>Type of theme</label>
       <input type="text" name="theme" placeholder="اسم الثيم" required>
-
-      <label>Website link</label>
-      <input type="url" name="website" placeholder="رابط الموقع" required>
-
-      <label>Client Name</label>
-      <input type="text" name="client" placeholder="اسم العميل" required>
-
-      <label>Seo Notes</label>
-      <textarea name="seoNotes" rows="4" placeholder="ملاحظات SEO"></textarea>
-
-      <label>Client Products</label>
-      <select name="products" required>
-        <option value="">اختر نوع المنتجات</option>
-        <option value="دروب شوبينج">دروب شوبينج</option>
-        <option value="خاصة">خاصة</option>
-        <option value="رقمية">رقمية</option>
-        <option value="خدمات">خدمات</option>
-        <option value="Niche store">Niche store</option>
-      </select>
-
-      <label>Keep new theme version?</label>
+  <label>هل تريد الاحتفاظ بالنسخة الجديده من الثيم </label>
       <select name="keepTheme" required>
         <option value="">اختر</option>
         <option value="yes">Yes</option>
         <option value="no">No</option>
       </select>
 
-      <label>Version Name to keep</label>
+      <label>اسم النسخة التي يريد العميل  الاحتفاظ بها  </label>
       <input type="text" name="versionName" placeholder="اسم النسخة">
+      <label>Website link</label>
+      <input type="url" name="website" placeholder="رابط الموقع" required>
+
+      <label>Client Name</label>
+      <input type="text" name="client" placeholder="اسم العميل" required>
+        <label>منتجات العميل </label>
+      <select name="products" required>
+        <option value="">اختر نوع المنتجات</option>
+        <option value="دروب شوبينج">دروب شوبينج</option>
+        <option value="خاصة">خاصة</option>
+        <option value="رقمية">رقمية</option>
+        <option value="خدمات">خدمات</option>
+      </select>
+      
+      <label>niche store</label>
+      <input type="text" name="nicheStoreclient" placeholder="اسم العميل" required>
+      
+
+      <label>Seo Notes</label>
+      <textarea name="seoNotes" rows="4" placeholder="ملاحظات SEO"></textarea>
+      
+      <label>Upload Folder of ui</label>
+      <textarea name="UploadFolderofui" rows="4" placeholder="Upload Folder of ui"></textarea>
+
+    
+      
+      
+
+    
     </div>
 
     <div class="card">
